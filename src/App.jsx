@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import GlobalStyle from './styles/GlobalStyle';
 import getData from './uttils/api/interpark';
 
 function App() {
@@ -10,8 +11,18 @@ function App() {
     })();
   }, []);
 
-  console.log(searchList);
-  return searchList.map((item) => <div key={item.itemId}>{item.title}</div>);
+  return (
+    <>
+      <ul>
+        {searchList.map((item) => (
+          <li key={item.itemId}>
+            <a href={item.link}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
